@@ -1,0 +1,124 @@
+/*
+Title: BabyName Stylesheet for Print Media
+
+Notes:
+*/
+
+/* Remove BGs/Adjust Layout
+------------------------------------------*/
+body {
+	background: #FFF;
+	margin: 0;
+	font-family: Verdana, sans-serif;
+	color: #333;
+	line-height: 1.5;
+}
+
+div#page {
+	width: 85%;
+	margin: 0 auto;
+}
+
+
+
+/* Hidden Page Elements
+------------------------------------------*/
+#sideBar, #inspiration h2 span, #topNav, label, input, .nameContent, .sociable,
+div#submitNames, #addNameLink, div#extrasDiv, #favoriteLinks, a.removeLink, a.removeAllLink {
+	display: none !important;
+}
+
+/*favorites only print view*/
+body.printFavorites #workspace {
+	display: none !important;
+}
+img, a img {
+	border: none;
+	text-decoration: none;
+}
+
+/* Text Formatting
+------------------------------------------*/
+a {
+	color: #222;
+	text-decoration: underline;
+}
+
+h1 {
+	color: #444;
+	font-size: 18pt;
+	margin: 0 0 1em;}
+
+h2 {
+	color: #444;
+	font-size: 14pt;
+	margin: .5em 0 0 0;}
+
+h3 {
+	color: #444;
+	font-size: 11pt;
+	margin: .5em 0 0;}
+
+h4 {
+	color: #444;
+	font-size: 11pt;
+	margin: 1.3em 0 0 0;}
+
+h5 {
+	color: #444;
+	font-size: 10pt;
+	margin: 1.2em 0 0 0;}
+
+h6 {
+	color: #444;
+	font-size: 10pt;
+	font-weight: normal;
+	margin: 1.2em 0 0 0;
+}
+
+p, li, dt, dd {
+	font-size: 10pt;
+	padding: 0 0 4pt 0;
+}
+
+fieldset {
+	border: 0;
+	margin-bottom: 2em;
+}
+
+label {
+	font-weight: bold;
+	padding: .8em 0;
+	display: block;
+}
+
+dt, dd {
+margin: 0;
+}
+
+dt {
+	margin-top: 3pt;
+	font-weight: bold;
+}
+
+#nameGrid { height:250px; position:relative; list-style-type:none; }
+#nameGrid li { position:absolute; width:183px; height:28px; border:1px solid #eee; }
+#nameGrid h3 { margin: .4em .5em 0; }
+
+/* grid positioning */
+/* rows */
+#n0, #n1, #n2 { top:0; }
+#n3, #n4, #n5 { top:50px; }
+#n6, #n7, #n8 { top:100px; }
+#n9, #n10, #n11 { top:150px; }
+#n12, #n13, #n14 { top:200px; }
+#n15, #n16, #n17 { top:250px; }
+
+/* columns */
+#n0, #n3, #n6, #n9, #n12, #n15 { left:0; }
+#n1, #n4, #n7, #n10, #n13, #n16 { left:195px; }
+#n2, #n5, #n8, #n11, #n14, #n17 { left:390px; }
+
+ul.dropBox,
+#favoritesList,
+#blockedList  { list-style-type:none; margin:10pt 0 20pt; padding:0; }

@@ -1,0 +1,35 @@
+function Overlay() {
+    var closeBg = document.getElementById('close_background');
+    var closeBtn = document.getElementById('closeCross');
+    var welcContainer = document.getElementById('welc_supercontainer');
+    var userInfo = window.NYToptly.userInfo;
+    var userLoggedIn;
+
+    if (userInfo.regi_id === 0) {
+        userLoggedIn = false;
+    }
+    else {
+        userLoggedIn = true;                
+        document.getElementsByTagName('html')[0].className +="user-logged-in";        
+    }        
+
+    closeBtn.addEventListener('click', function () {        
+        welcContainer.style.display = 'none';
+    });
+
+    closeBg.addEventListener('click', function () {        
+        welcContainer.style.display = 'none';
+    });
+
+    window.setTimeout(function () {                
+        welcContainer.style.display = 'none';
+    }, 7000);
+
+    window.onkeydown = function (event) {
+        if (event.keyCode === 27) { // ESC            
+            welcContainer.style.display = 'none';
+        }
+    };
+}
+
+Overlay();
