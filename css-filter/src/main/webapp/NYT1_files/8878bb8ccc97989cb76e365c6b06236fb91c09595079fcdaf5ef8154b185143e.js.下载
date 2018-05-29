@@ -1,1 +1,0 @@
-window.optimizely.push({type:"load",data:{changes:[{"name": "Inline Message", "config": {"subscribe_url": "https://www.nytimes.com/subscription/inyt/lp8U87R.html?campaignId=78LXL"}, "id": "E06A7D08-2AD7-456A-AD13-197605A4900A", "dependencies": [], "type": "widget", "widget_id": "9272138185"}]}});
