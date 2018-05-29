@@ -2,20 +2,16 @@ package com.philip.cssFilter;
 
 import java.io.BufferedReader;
 import java.io.CharArrayWriter;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Properties;
 
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
+import javax.servlet.FilterConfig;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
@@ -41,8 +37,13 @@ public class CssFilter extends HttpServlet implements Filter {
 
 	private final Logger logger = LoggerFactory.getLogger(CssFilter.class);
 
+	@Override
 	public void init(ServletConfig config) throws ServletException {
 		super.init(config);
+	}
+	
+	@Override // Servlet API 3.1
+	public void init(FilterConfig filterConfig) throws ServletException {
 	}
 
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
