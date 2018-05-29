@@ -7,12 +7,12 @@
 
 	<context-param>
 		<param-name>keepClass</param-name>
-		<param-value>pagination,icon,alert,alert-danger,alert-success,active,voted,invalid,glyphicon,glyphicon-thumbs-down,glyphicon-thumbs-up,voteUp,messages,text-success,hover</param-value>
+		<param-value>-</param-value>
 	</context-param>
 
 	<context-param>
 		<param-name>keepTag</param-name>
-		<param-value>hr</param-value>
+		<param-value>-</param-value>
 	</context-param>
 
 	<filter>
