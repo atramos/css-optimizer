@@ -12,18 +12,17 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.URL;
-import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 /**
  *
@@ -33,7 +32,7 @@ public class CSSOptimizer {
 
     //--------------------------------------------------------------------------
     //  Members
-    private final Logger logger = LoggerFactory.getLogger(CSSOptimizer.class);
+	private final Logger logger = java.util.logging.Logger.getLogger(getClass().getName());
 
     private final String openBracket = "\\{";
     private final String closeBracket = "\\}";
@@ -131,12 +130,12 @@ public class CSSOptimizer {
         String targetFileContent = readFileContent(targetFilePath);
         List<CSSRule> cssRules = extractCSSRules(targetFileContent);
         //debug
-        logger.debug("Found " + cssStyleRulesCount + " style rule(s); begin optimizing ...");
+        logger.info("Found " + cssStyleRulesCount + " style rule(s); begin optimizing ...");
         String result = buildResult(cssRules);
         try (OutputStream fileOutputStream = new FileOutputStream(resultFilePath)) {//write down optimized result
             fileOutputStream.write(result.getBytes("UTF-8"));
         }
-        logger.debug("Finish optmizing css file, total style rule: " + cssStyleRulesCount
+        logger.info("Finish optmizing css file, total style rule: " + cssStyleRulesCount
                 + "; total removed style rule: " + removedCssStyleRulesCount + "(" + (removedCssStyleRulesCount * 100 / cssStyleRulesCount) + "%)");
     }
 
@@ -145,9 +144,9 @@ public class CSSOptimizer {
     //--------------------------------------------------------------------------
     //  Utils
     private void extractUsedClassNamesNTagNames() throws IOException {
-        logger.debug("Begin parsing input files");
+        logger.info("Begin parsing input files");
         for (String inputFilePath : htmlFiles) {
-            logger.debug("Parsing file: " + inputFilePath);
+            logger.info("Parsing file: " + inputFilePath);
             extractUsedClassNamesNTagNames(readFileContent(inputFilePath));
         }
     }
@@ -160,11 +159,11 @@ public class CSSOptimizer {
             for (String className : element.classNames()) {
                 if (className != null && className.trim().length() > 0) {
                     usedClassNames.add(className);
-                    logger.debug("Found class: " + className);
+                    logger.info("Found class: " + className);
                 }
             }
             usedTagNames.add(element.tagName().toLowerCase());
-            logger.debug("Found tag: " + element.tagName());
+            logger.info("Found tag: " + element.tagName());
         }
     }
 
@@ -226,7 +225,7 @@ public class CSSOptimizer {
      */
     public List<CSSRule> extractCSSRules(String rulesInString) {
         //debug
-        logger.debug("Begin parsing: " + rulesInString);
+        logger.info("Begin parsing: " + rulesInString);
         List<CSSRule> retVal = new ArrayList<>();
         String stdContent = removeContentByPattern(rulesInString, commentPattern);
         List<String> cssRuleStrings = matchAll(stdContent, rulePattern, 0);
@@ -292,7 +291,7 @@ public class CSSOptimizer {
                             .append("\n");
                 } else {
                     boolean isUsedRule = false;
-                    logger.debug("Begin checking rule: " + styleRule.getSelector());
+                    logger.info("Begin checking rule: " + styleRule.getSelector());
                     for (String className : styleRule.getClassNames()) {
                         if (usedClassNames.contains(className)) {
                             isUsedRule = true;
@@ -313,9 +312,9 @@ public class CSSOptimizer {
                         retVal.append("\n")
                                 .append(styleRule.getContent())
                                 .append("\n");
-                        logger.debug("Found an used rule: " + styleRule.getSelector());
+                        logger.info("Found an used rule: " + styleRule.getSelector());
                     } else {
-                        logger.debug("Remove unsed rule: " + styleRule.getSelector());
+                        logger.info("Remove unsed rule: " + styleRule.getSelector());
                         removedCssStyleRulesCount++;
                     }
                 }

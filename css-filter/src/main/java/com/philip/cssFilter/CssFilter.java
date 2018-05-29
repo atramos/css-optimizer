@@ -8,6 +8,7 @@ import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 import java.net.MalformedURLException;
 import java.util.List;
+import java.util.logging.Logger;
 
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
@@ -27,23 +28,23 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import com.megaads.css.optimizer.CSSOptimizer;
 import com.megaads.css.optimizer.CSSRule;
 
 public class CssFilter extends HttpServlet implements Filter {
 
-	private final Logger logger = LoggerFactory.getLogger(CssFilter.class);
+	private final Logger logger = java.util.logging.Logger.getLogger(getClass().getName());
 
 	@Override
 	public void init(ServletConfig config) throws ServletException {
 		super.init(config);
+		logger.info("init ok");
 	}
 	
 	@Override // Servlet API 3.1
 	public void init(FilterConfig filterConfig) throws ServletException {
+		logger.info("init ok");
 	}
 
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
@@ -57,11 +58,13 @@ public class CssFilter extends HttpServlet implements Filter {
 
 		CharArrayWriter writer = new CharArrayWriter();
 		String originalContent = wrapper.getResponseContent();
-		logger.debug("wrapped the response.");
+		logger.info("Response Length = " + originalContent.length());
 
 		// 2.optimize the css:
 		Document doc = Jsoup.parse(originalContent);
 		Elements links = doc.getElementsByTag("link");
+		
+		logger.info("Number of links = " + links.size());
 
 		int indexBegin = 0;
 		int indexEnd = originalContent.length();
@@ -70,9 +73,13 @@ public class CssFilter extends HttpServlet implements Filter {
 		String afterPart = "";
 		String changedContent = originalContent;
 		for (Element link : links) {
+			
 			// whether is css:
 			String type = link.attr("type");
 			String rel = link.attr("rel");
+
+			logger.finest("type=" + type + " rel=" + rel);
+			
 			if (!("text/css".equals(type) || "stylesheet".equals(rel)))
 				continue;
 
@@ -80,7 +87,7 @@ public class CssFilter extends HttpServlet implements Filter {
 			if (linkHref == null || linkHref.length() == 0)
 				continue;
 
-			logger.debug("begin to solve css: " + link.attr("href"));
+			logger.info("begin to solve css: " + link.attr("href"));
 
 			CSSOptimizer optimizer = new CSSOptimizer(originalContent);
 
@@ -101,11 +108,11 @@ public class CssFilter extends HttpServlet implements Filter {
 				optimizer.keepTagName(tags[i]);
 			}}
 
-			logger.debug("keep the classes and tags.");
+			logger.info("keep the classes and tags.");
 
 			// 2.5 used class and tag in html:
 			optimizer.extractUsedClass();
-			logger.debug("used classes and tags.");
+			logger.info("used classes and tags.");
 
 			// 2.6 Get CSS url:
 			String cssFile = retriveCSS(request, linkHref);
@@ -115,14 +122,14 @@ public class CssFilter extends HttpServlet implements Filter {
 			// 3.2 from used html to optimize css:
 			List<CSSRule> cssRules = optimizer.extractCSSRules(cssFile);
 
-			logger.debug("Found " + optimizer.getCssStyleRulesCount() + " style rule(s); begin optimizing ...");
+			logger.info("Found " + optimizer.getCssStyleRulesCount() + " style rule(s); begin optimizing ...");
 			String result = optimizer.buildResult(cssRules);
-			logger.debug("optimized the css file");
+			logger.info("optimized the css file");
 
 			// 3.3 replace html href with css:
 			index = changedContent.indexOf(linkHref);
 			if (index != -1) {
-				logger.debug("index = " + index + ", changedContent: " + changedContent);
+				logger.info("index = " + index + ", changedContent: " + changedContent);
 				beforePart = changedContent.substring(0, index - 1);
 				afterPart = changedContent.substring(index, changedContent.length() - 1);
 				indexBegin = beforePart.lastIndexOf("<");
@@ -133,7 +140,7 @@ public class CssFilter extends HttpServlet implements Filter {
 				changedContent = beforePart + "<style type=\"text/css\">" + result + "</style>" + afterPart;
 
 				if(optimizer.getCssStyleRulesCount()!=0)
-				logger.debug("Finish optmizing css file, total style rule: " + optimizer.getCssStyleRulesCount()
+				logger.info("Finish optmizing css file, total style rule: " + optimizer.getCssStyleRulesCount()
 						+ "; total removed style rule: " + optimizer.getRemovedCssStyleRulesCount() + "("
 						+ (optimizer.getRemovedCssStyleRulesCount() * 100 / optimizer.getCssStyleRulesCount()) + "%)");
 			}
@@ -157,7 +164,7 @@ public class CssFilter extends HttpServlet implements Filter {
 		String context = request.getServletContext().getContextPath();
 		String rootURL = protocal + "://" + server + ":" + port + context;
 
-		logger.debug("The root path of files:" + rootURL);
+		logger.info("The root path of files:" + rootURL);
 		// Get CSS:
 		if ('.' == linkHref.charAt(0)) {
 			urlCss = rootURL + linkHref.substring(1, linkHref.length());
@@ -182,7 +189,7 @@ public class CssFilter extends HttpServlet implements Filter {
 		StringBuffer sbCss = new StringBuffer();
 		try {
 			HttpResponse response = client.execute(getMethod);
-			logger.debug("The return code is : " + response.getStatusLine());
+			logger.info("The return code is : " + response.getStatusLine());
 			if (response.getStatusLine().getStatusCode() < 200 || response.getStatusLine().getStatusCode() >= 300)
 				return cssFile;
 
@@ -194,7 +201,7 @@ public class CssFilter extends HttpServlet implements Filter {
 			}
 			inCss.close();
 			cssFile = new String(sbCss.toString().getBytes(),"UTF-8");
-			logger.debug("the CSS file content: " + cssFile);
+			logger.info("the CSS file content: " + cssFile);
 		} catch (MalformedURLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

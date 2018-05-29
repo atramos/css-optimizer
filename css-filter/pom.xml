@@ -12,7 +12,6 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
-        <slf4j.version>1.6.1</slf4j.version>
         <spring.version>4.0.3.RELEASE</spring.version>
         <hibernate.version>4.3.5.Final</hibernate.version>
         <jackson.version>1.9.10</jackson.version>
@@ -26,19 +25,6 @@
             <artifactId>jsoup</artifactId>
             <version>1.7.3</version>            
         </dependency>
-        
-        
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-log4j12</artifactId>
-            <version>${slf4j.version}</version>
-        </dependency>
-        
-        <dependency>
-            <groupId>log4j</groupId>
-            <artifactId>log4j</artifactId>
-            <version>1.2.16</version>
-        </dependency>        
         
         <dependency>
             <groupId>junit</groupId>
