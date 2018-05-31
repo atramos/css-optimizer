@@ -5,7 +5,7 @@
  */
 package com.megaads.css.optimizer;
 
-import java.io.BufferedReader; 
+import java.io.BufferedReader;  
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;

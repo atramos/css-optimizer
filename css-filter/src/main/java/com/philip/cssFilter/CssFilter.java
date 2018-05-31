@@ -1,7 +1,7 @@
 package com.philip.cssFilter;
 
 import java.io.BufferedReader;
-import java.io.CharArrayWriter; 
+import java.io.CharArrayWriter;  
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
