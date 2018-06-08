@@ -5,7 +5,7 @@
  */
 package com.megaads.css.optimizer;
 
-import java.io.BufferedReader;
+import java.io.BufferedReader;  
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -120,8 +120,8 @@ public class CSSOptimizer {
         usedClassNames.add(className);
     }
     
-    public void extractUsedClass() throws IOException{
-    	extractUsedClassNamesNTagNames();
+    public void extractUsedClass4Content() throws IOException{
+    	extractUsedClassNamesNTagNames(this.fileContent);
     }
 
     public void optimize() throws IOException {
