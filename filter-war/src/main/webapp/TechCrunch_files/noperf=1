@@ -1,0 +1,44 @@
+document.write("<!--*\n");
+document.write("var aolAdId=\"10483098|26374884\";\n");
+document.write("var aolSize=\"|\";\n");
+document.write("var aolFormat=\"InBannerVendorProduct\";\n");
+document.write("var aolGUID=\"1527688164|34911766437698062\";\n");
+document.write("*-->\n");
+document.write("<scr"+"ipt language=\"javascript\" src=\"https://track.adform.net/adfscript/?bn=22908089;click=https://at.atwola.com/adlink/5113.1/3739737/0/170/AdId=10483098;BnId=3;guid=VBaf69a4ce-cdfd-11e7-b1e1-06da49ab6bbd;itime=688163220;gdpr=0;nodecode=yes;impref=15276881643515683043;imprefseq=34911766437698062;imprefts=1527688164;link=;ord=688163220\"></scr"+"ipt>\n");
+
+
+
+
+document.write("<!--*\n");
+document.write("var moatClientLevel1=5113\n");
+document.write("var moatClientLevel2=125930\n");
+document.write("var moatClientLevel3=0\n");
+document.write("var moatClientLevel4=3739737\n");
+document.write("var zMoatMaster=10483173\n");
+document.write("var zMoatFlight=10483098\n");
+document.write("var zMoatBanner=26374884\n");
+document.write("var zURL=https\n");
+document.write("var zMoatPlacementId=3739737\n");
+document.write("var zMoatPlacementExtId=93484946\n");
+document.write("var zMoatAdId=10483098\n");
+document.write("var zMoatCreative=0\n");
+document.write("var zMoatBannerID=3\n");
+document.write("var zMoatCustomVisp=0\n");
+document.write("var zMoatCustomVist=0\n");
+document.write("var zMoatIsAdvisGoal=0\n");
+document.write("var zMoatEventUrl=\n");
+document.write("var zMoatSize=170\n");
+document.write("var zMoatSubNetID=1\n");
+document.write("var zMoatisSelected=0\n");
+document.write("var zMoatadServer=at.atwola.com\n");
+document.write("var zMoatadVisServer=\n");
+document.write("var zMoatSamplingRate=23\n");
+document.write("var zMoatliveTestCookie=\n");
+document.write("var zMoatRefSeqId=OoBANEBC8BA\n");
+document.write("var zMoatImpRefTs=1527688164\n");
+document.write("var zMoatAlias=93484946\n");
+document.write("var zMoatWebsiteID=125930\n");
+document.write("var zMoatVert=\n");
+document.write("var zMoatBannerInfo=486340918\n");
+document.write("*-->\n");
+document.write("<scr"+"ipt src=\""+(window.location.protocol=='https:' ? "https://aka-cdn.adtechus.com" : "http://aka-cdn-ns.adtechus.com")+"/media/moat/adtechbrands092348fjlsmdhlwsl239fh3df/moatad.js#moatClientLevel1=5113&moatClientLevel2=125930&moatClientLevel3=0&moatClientLevel4=3739737&zMoatMaster=10483173&zMoatFlight=10483098&zMoatBanner=26374884&zURL=https&zMoatPlacementId=3739737&zMoatAdId=10483098&zMoatCreative=0&zMoatBannerID=3&zMoatCustomVisp=0&zMoatCustomVist=0&zMoatIsAdvisGoal=0&zMoatEventUrl=&zMoatSize=170&zMoatSubNetID=1&zMoatisSelected=0&zMoatadServer=at.atwola.com&zMoatadVisServer=&zMoatSamplingRate=23&zMoatliveTestCookie=&zMoatRefSeqId=OoBANEBC8BA&zMoatImpRefTs=1527688164&zMoatAlias=93484946&zMoatVert=&zMoatBannerInfo=486340918\" type=\"text/javascript\"></scr"+"ipt>");

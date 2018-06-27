@@ -1,0 +1,9 @@
+Adform=window.Adform||{};
+Adform.host="https://track.adform.net";
+Adform.shost="https://s2.adform.net";
+Adform.scriptBase=Adform.shost+"/banners/scripts/";
+Adform.cache="610";
+Adform.ADFBannerData={"URL":"https://track.adform.net/adfserve/?bn=22908089;click=https://at.atwola.com/adlink/5113.1/3739737/0/170/AdId=10483098;BnId=3;guid=VBaf69a4ce-cdfd-11e7-b1e1-06da49ab6bbd;itime=688118012;gdpr=0;nodecode=yes;impref=15276881193456956131;imprefseq=89236406878083555;imprefts=1527688119;link=;ord=688118012","CREFURL":"https%3a%2f%2ftechcrunch.com%2f","BN":22908089};
+if(!Adform.ADFBannerParams)Adform.ADFBannerParams=[];
+Adform.ADFBannerParams.push(Adform.ADFBannerData);
+typeof Adform.ADFUtilInstance=="undefined"?document.write('<scr'+'ipt type="text/javascript" src="https://s2.adform.net/stoat/610/s2.adform.net/bootstrap.js"></scr'+'ipt>'):new Adform.ADFBanner();
