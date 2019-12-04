@@ -5,11 +5,11 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-		<groupId>com.philip</groupId>
-		<artifactId>filter-parent</artifactId>
+		<groupId>org.fastercss</groupId>
+		<artifactId>css-optimizer</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-	<artifactId>filter-war</artifactId>
+	<artifactId>css-optimizer-test</artifactId>
 	<packaging>war</packaging>
 	<name>filter-war Maven Webapp</name>
 	<url>http://maven.apache.org</url>
@@ -27,12 +27,12 @@
 			<scope>test</scope>
 		</dependency>
 		<dependency>
-			<groupId>com.philip</groupId>
-			<artifactId>filter-jar</artifactId>
+			<groupId>org.fastercss</groupId>
+			<artifactId>css-optimizer-lib</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 	</dependencies>
 	<build>
-		<finalName>filter-war</finalName>
+		<finalName>css-optimizer-test</finalName>
 	</build>
 </project>

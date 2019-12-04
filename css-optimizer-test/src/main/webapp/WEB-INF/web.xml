@@ -17,7 +17,7 @@
   
   <filter>
   	<filter-name>CssFilter</filter-name>
-  	<filter-class>com.philip.cssFilter.CssFilter</filter-class>
+  	<filter-class>org.fastercss.cssFilter.CssFilter</filter-class>
   </filter>
   
    <filter-mapping>

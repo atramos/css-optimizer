@@ -5,12 +5,12 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-		<groupId>com.philip</groupId>
-		<artifactId>filter-parent</artifactId>
+		<groupId>org.fastercss</groupId>
+		<artifactId>css-optimizer</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-	<artifactId>filter-jar</artifactId>
-	<name>filter-jar</name>
+	<artifactId>css-optimizer-lib</artifactId>
+	<name>css-optimizer-lib</name>
 	<url>http://maven.apache.org</url>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

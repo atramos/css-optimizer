@@ -1,4 +1,4 @@
-package com.philip.cssFilter;
+package org.fastercss.cssFilter;
 
 import java.io.CharArrayWriter;
 import java.io.PrintWriter;
