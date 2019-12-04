@@ -6,7 +6,7 @@
   <version>0.0.1-SNAPSHOT</version>
   <packaging>pom</packaging>
   <modules>
-    <module>filter-jar</module>
-    <module>filter-war</module>
+    <module>filter-jar/pom.xml</module>
+    <module>filter-war/pom.xml</module>
   </modules>
 </project>
