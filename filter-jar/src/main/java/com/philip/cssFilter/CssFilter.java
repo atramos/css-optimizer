@@ -56,11 +56,7 @@ public class CssFilter extends HttpServlet implements Filter {
 		String path = ((HttpServletRequest) request).getServletPath();
 		String tPath = path.substring(path.length() - 4, path.length());
 
-		if (".css".equals(tPath)) {
-			// do nothing
-			logger.info("entering css");
-			chain.doFilter(request, response);
-		} else {
+		if (tPath.matches(".*\\.html?$")) {
 
 			// 1.Read the html and store in memory:
 			PrintWriter out = response.getWriter();
@@ -150,7 +146,9 @@ public class CssFilter extends HttpServlet implements Filter {
 			out.write(writer.toString());
 			out.close();
 		}
-
+		else {
+			chain.doFilter(request, response);
+		}
 		
 	}
 
